@@ -2,11 +2,11 @@
   "group": [
     {
       "check": [
-        "starslib/platform/util/NukkitLocationKt",
-        "starslib/platform/type/NukkitPlayer"
+        "taboolib/platform/util/NukkitLocationKt",
+        "taboolib/platform/type/NukkitPlayer"
       ],
       "member": [
-        "starslib/platform/util/NukkitLocationKt"
+        "taboolib/platform/util/NukkitLocationKt"
       ],
       "mode": "REMOVE"
     }
