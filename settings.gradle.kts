@@ -29,7 +29,7 @@ fun importPlatforms() {
     include("platform:platform-velocity")
     // include("platform:platform-cloudnet-v3")
     include("platform:platform-application")
-    include("platform:platform-powernukkitx")
+    include("platform:platform-starkkit")
 }
 
 fun importExtensions() {

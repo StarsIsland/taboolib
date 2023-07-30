@@ -54,9 +54,10 @@ public class NukkitPlugin extends PluginBase {
         }
     }
 
-    public NukkitPlugin() {
+    @Override
+    public void onInit() {
         instance = this;
-        
+
         if (!IsolatedClassLoader.isEnabled()) {
             TabooLibCommon.lifeCycle(LifeCycle.INIT);
         } else {
