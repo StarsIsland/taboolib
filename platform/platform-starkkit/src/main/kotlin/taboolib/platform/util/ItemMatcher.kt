@@ -1,4 +1,7 @@
 @file:Isolated
+
+package taboolib.platform.util
+
 import cn.nukkit.Player
 import cn.nukkit.inventory.Inventory
 import cn.nukkit.item.Item
