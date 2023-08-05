@@ -7,6 +7,7 @@ repositories {
 dependencies {
     compileOnly("com.chsteam:starkkit:1.20.10-r1")
     compileOnly("org.tabooproject.reflex:reflex:1.0.19")
+    compileOnly(project(":module:module-lang"))
     compileOnly("org.tabooproject.reflex:analyser:1.0.19")
     compileOnly(project(":common"))
 }
