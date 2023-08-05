@@ -42,7 +42,7 @@ open class NukkitProxyEvent(val proxyEvent: ProxyEvent? = null) : Event(), Cance
         val handlers = HandlerList()
 
         @JvmStatic
-        fun getHandlerList(): HandlerList {
+        fun getHandlers(): HandlerList {
             return handlers
         }
     }
