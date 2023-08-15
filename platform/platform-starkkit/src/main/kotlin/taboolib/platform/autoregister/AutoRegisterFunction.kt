@@ -10,6 +10,7 @@ import cn.nukkit.item.customitem.CustomItem
 import cn.nukkit.item.enchantment.Enchantment
 import taboolib.common.platform.function.info
 import java.io.File
+import java.lang.reflect.Modifier
 import java.net.URISyntaxException
 import java.net.URL
 import java.nio.file.Paths
@@ -36,6 +37,12 @@ object AutoRegisterFunction {
     private fun scanClasses(className: String) {
         try {
             val clazz = Class.forName(className)
+
+            val modifiers = clazz.modifiers
+            if (Modifier.isAbstract(modifiers)) {
+                return
+            }
+
             if(clazz.annotations.isEmpty()) return
             val annotation = clazz.getAnnotation(AutoRegister::class.java)
             annotation?.let {
