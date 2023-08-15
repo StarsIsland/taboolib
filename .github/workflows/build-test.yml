@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   build:
-    if: "contains(github.event.head_commit.message, 'publish')"
+    if: "contains(github.event.head_commit.message, 'dev')"
     runs-on: ubuntu-latest
     steps:
       # 环境配置
@@ -30,11 +30,11 @@ jobs:
       - name: make gradle wrapper executable
         run: chmod +x ./gradlew
 
-      # 发布到 GitHub
-      - name: create release
-        uses: actions/create-release@v1
+      # 编译测试
+      - name: build test
+        id: publish_1
+        continue-on-error: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: 6.1.0-${{ github.run_number }}
-          release_name: Release 6.1.0-${{ github.run_number }}
+          NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
+          NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
+        run: ./gradlew build -Pbuild=$GITHUB_RUN_NUMBER -PtaboolibUsername=$NEXUS_USERNAME -PtaboolibPassword=$NEXUS_PASSWORD
