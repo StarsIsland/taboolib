@@ -2,7 +2,10 @@ package taboolib.platform.fakeInv
 
 import cn.nukkit.block.Block
 import cn.nukkit.blockentity.BlockEntity
+import cn.nukkit.event.inventory.InventoryTransactionEvent
 import cn.nukkit.inventory.InventoryType
+import cn.nukkit.inventory.transaction.action.SlotChangeAction
+import taboolib.common.platform.event.SubscribeEvent
 import taboolib.platform.fakeInv.block.DoubleFakeBlock
 import taboolib.platform.fakeInv.block.FakeBlock
 import taboolib.platform.fakeInv.block.SingleFakeBlock
@@ -10,6 +13,16 @@ import java.util.*
 
 
 object FakeInventories {
+
+    @SubscribeEvent
+    fun onInventoryTransaction(event: InventoryTransactionEvent) {
+        event.transaction.actions.forEach { action ->
+            if(action is SlotChangeAction && action.inventory is CustomInventory) {
+                (action.inventory as CustomInventory).handle(action.slot, action.sourceItem, event);
+            }
+        }
+    }
+
 
     private val FAKE_BLOCKS: MutableMap<InventoryType, FakeBlock> = EnumMap(
         InventoryType::class.java
