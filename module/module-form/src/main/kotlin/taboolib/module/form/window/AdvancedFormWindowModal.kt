@@ -1,4 +1,4 @@
-package taboolib.platform.form.window
+package taboolib.module.form.window
 
 import cn.nukkit.Player
 import cn.nukkit.form.window.FormWindow

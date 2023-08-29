@@ -1,4 +1,4 @@
-package taboolib.platform.form.element
+package taboolib.module.form.element
 
 import cn.nukkit.Player
 import cn.nukkit.form.element.ElementButton

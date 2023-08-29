@@ -1,4 +1,4 @@
-package taboolib.platform.fromdsl
+package taboolib.module.form.dsl
 
 import cn.nukkit.Player
 import cn.nukkit.form.element.ElementButton
@@ -10,7 +10,7 @@ import cn.nukkit.form.element.ElementSlider
 import cn.nukkit.form.element.ElementStepSlider
 import cn.nukkit.form.element.ElementToggle
 import cn.nukkit.form.response.FormResponseData
-import taboolib.platform.form.element.ResponseElementButton
+import taboolib.module.form.element.ResponseElementButton
 import kotlin.reflect.KMutableProperty1
 
 @DslMarker

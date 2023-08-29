@@ -1,4 +1,4 @@
-package taboolib.platform.fromdsl
+package taboolib.module.form.dsl
 
 import cn.nukkit.Player
 import cn.nukkit.form.element.Element
@@ -7,9 +7,9 @@ import cn.nukkit.form.element.ElementButtonImageData
 import cn.nukkit.form.response.FormResponseCustom
 import cn.nukkit.form.response.FormResponseData
 import cn.nukkit.form.window.FormWindowModal
-import taboolib.platform.form.window.AdvancedFormWindowCustom
-import taboolib.platform.form.window.AdvancedFormWindowModal
-import taboolib.platform.form.window.AdvancedFormWindowSimple
+import taboolib.module.form.window.AdvancedFormWindowCustom
+import taboolib.module.form.window.AdvancedFormWindowModal
+import taboolib.module.form.window.AdvancedFormWindowSimple
 import kotlin.reflect.KMutableProperty1
 
 

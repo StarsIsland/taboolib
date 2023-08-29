@@ -1,4 +1,4 @@
-package taboolib.platform.form.window
+package taboolib.module.form.window
 
 import cn.nukkit.Player
 import cn.nukkit.form.element.ElementButton
@@ -6,7 +6,7 @@ import cn.nukkit.form.window.FormWindow
 import cn.nukkit.form.window.FormWindowSimple
 import com.google.gson.Gson
 import org.jetbrains.annotations.NotNull
-import taboolib.platform.form.element.ResponseElementButton
+import taboolib.module.form.element.ResponseElementButton
 import java.util.*
 import java.util.function.BiConsumer
 import java.util.function.Consumer

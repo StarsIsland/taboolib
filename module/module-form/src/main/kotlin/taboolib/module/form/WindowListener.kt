@@ -1,4 +1,4 @@
-package taboolib.platform.form
+package taboolib.module.form
 
 import cn.nukkit.Player
 import cn.nukkit.event.player.PlayerFormRespondedEvent
@@ -7,9 +7,9 @@ import cn.nukkit.event.player.PlayerSettingsRespondedEvent
 import cn.nukkit.network.protocol.ServerSettingsResponsePacket
 import taboolib.common.platform.event.SubscribeEvent
 import taboolib.common.platform.function.submit
-import taboolib.platform.form.window.AdvancedFormWindowCustom
-import taboolib.platform.form.window.AdvancedFormWindowModal
-import taboolib.platform.form.window.AdvancedFormWindowSimple
+import taboolib.module.form.window.AdvancedFormWindowCustom
+import taboolib.module.form.window.AdvancedFormWindowModal
+import taboolib.module.form.window.AdvancedFormWindowSimple
 
 
 object WindowListener {
