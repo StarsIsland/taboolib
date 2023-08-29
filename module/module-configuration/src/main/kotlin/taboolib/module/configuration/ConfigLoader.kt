@@ -32,7 +32,10 @@ class ConfigLoader : ClassVisitor(1) {
         if (field.isAnnotationPresent(Config::class.java)) {
             val configAnno = field.getAnnotation(Config::class.java)
             val name = configAnno.property("value", "config.yml")
-            val target = configAnno.property("target", name)
+            val target = configAnno.property("target", name).let {
+                it.ifEmpty { name }
+            }
+            
             if (files.containsKey(name)) {
                 field.set(instance?.get(), files[name]!!.configuration)
             } else {
