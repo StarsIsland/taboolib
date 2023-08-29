@@ -4,6 +4,7 @@ import cn.nukkit.block.Block
 import cn.nukkit.block.customblock.CustomBlock
 import cn.nukkit.blockentity.BlockEntity
 import cn.nukkit.entity.Entity
+import cn.nukkit.entity.custom.CustomEntity
 import cn.nukkit.entity.provider.CustomClassEntityProvider
 import cn.nukkit.item.Item
 import cn.nukkit.item.customitem.CustomItem
@@ -32,51 +33,55 @@ object AutoRegisterFunction {
     private fun scanClasses(className: String) {
         try {
             val clazz = Class.forName(className)
-
             val modifiers = clazz.modifiers
-            if (Modifier.isAbstract(modifiers)) {
+
+            if (Modifier.isAbstract(modifiers) || clazz.isAnnotationPresent(AutoRegister::class.java)) {
                 return
             }
 
-            if(clazz.annotations.isEmpty()) return
-            val annotation = clazz.getAnnotation(AutoRegister::class.java)
-            annotation?.let {
-                when (it.value) {
-                    RegisterType.ITEM -> {
-                        val customItemClass = clazz as? Class<out CustomItem>
-                        customItemClass?.let { Item.registerCustomItem(it) }
-                    }
-                    RegisterType.BLOCK_ENTITY -> {
-                        val customBlockEntity = clazz as? Class<out BlockEntity>
-                        customBlockEntity?.let {
-                            BlockEntity.registerBlockEntity(clazz.simpleName.lowercase(), it)
-                        }
-                    }
-                    RegisterType.BLOCK -> {
-                        val customBlock = clazz as? Class<out CustomBlock>
-                        customBlock?.let {
-                            Block.registerCustomBlock(listOf(it))
-                        }
-                    }
-                    RegisterType.ENCHANTMENT -> {
-                        val customEnchantment = clazz.getDeclaredConstructor().newInstance() as? Enchantment
-                        customEnchantment?.let {
-                            Enchantment.register(it)
-                        }
-                    }
-
-                    RegisterType.ENTITY -> {
-                        val customEntity = clazz as? Class<out Entity>
-
-                        customEntity?.let {
-                            Entity.registerCustomEntity(CustomClassEntityProvider(it))
-                        }
-                    }
-                }
+            when {
+                isTypeOf<CustomItem>(clazz) -> registerCustomItem(clazz)
+                isTypeOf<BlockEntity>(clazz) -> registerBlockEntity(clazz)
+                isTypeOf<CustomBlock>(clazz) -> registerCustomBlock(clazz)
+                isTypeOf<Enchantment>(clazz) -> registerEnchantment(clazz)
+                isTypeOf<Entity>(clazz) -> registerEntity(clazz)
             }
-        } catch (e: ClassNotFoundException) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
 
+    private inline fun <reified T> isTypeOf(clazz: Class<*>): Boolean {
+        return T::class.java.isAssignableFrom(clazz)
+    }
+
+    private fun registerCustomItem(clazz: Class<*>) {
+        Item.registerCustomItem(clazz.castToType<CustomItem>())
+    }
+
+    private fun registerBlockEntity(clazz: Class<*>) {
+        clazz.getAnnotation(BlockEntityData::class.java)?.let { data ->
+            BlockEntity.registerBlockEntity(data.name, clazz.castToType<BlockEntity>())
+        }
+    }
+
+    private fun registerCustomBlock(clazz: Class<*>) {
+        Block.registerCustomBlock(listOf(clazz.castToType<CustomBlock>()))
+    }
+
+    private fun registerEnchantment(clazz: Class<*>) {
+        clazz.getDeclaredConstructor().newInstance().let {
+            if (it is Enchantment) {
+                Enchantment.register(it)
+            }
+        }
+    }
+
+    private fun registerEntity(clazz: Class<*>) {
+        Entity.registerCustomEntity(CustomClassEntityProvider(clazz.castToType<Entity>()))
+    }
+
+    private inline fun <reified T> Class<*>.castToType(): Class<out T>? {
+        return this as? Class<out T>
+    }
 }
