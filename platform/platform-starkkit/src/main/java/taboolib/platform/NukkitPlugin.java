@@ -7,14 +7,11 @@ import org.jetbrains.annotations.Nullable;
 import taboolib.common.LifeCycle;
 import taboolib.common.TabooLibCommon;
 import taboolib.common.classloader.IsolatedClassLoader;
-import taboolib.common.inject.ClassVisitor;
-import taboolib.common.inject.VisitorHandler;
 import taboolib.common.io.Project1Kt;
 import taboolib.common.platform.Platform;
 import taboolib.common.platform.PlatformSide;
 import taboolib.common.platform.Plugin;
 import taboolib.common.platform.function.ExecutorKt;
-import taboolib.platform.autoregister.AutoRegisterFunction;
 
 import java.io.File;
 import java.net.URL;
