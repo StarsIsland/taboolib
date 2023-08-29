@@ -36,7 +36,7 @@ class ConfigLoader : ClassVisitor(1) {
             if (files.containsKey(name)) {
                 field.set(instance?.get(), files[name]!!.configuration)
             } else {
-                val file = releaseResourceFile(name, target)
+                val file = releaseResourceFile(name, target = target)
                 // 兼容模式加载
                 val conf = if (field.fieldType == SecuredFile::class.java) SecuredFile.loadConfiguration(file) else Configuration.loadFromFile(file)
                 // 赋值
