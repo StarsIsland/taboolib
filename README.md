@@ -117,9 +117,11 @@ size of the repository.
 + __module-configuration__: Solutions for Configuration（Yaml & Toml & Hocon & Json)
 + __module-configuration-legacy__: YAML Interface Wrappers & Configuration Management Tools ( previous version, before
   v6.0.3)
++ __module-custom-addon__: Add Custom Items Entity and so on for Bedrock Version.
 + __module-database__: Database Management Tools
 + __module-database-mongodb__: Database Management Tools（MongoDB）
 + __module-effect__: Particles Generation Utilities
++ __module-form__: Form Utils for Bedrock Version.
 + __module-kether__: Build-in scripts (action statements) solutions
 + __module-lang__: Language File Utilities
 + __module-metrics__: Integration of bStats
@@ -129,12 +131,14 @@ size of the repository.
 + __module-porticus__: BungeeCord Communication Tools
 + __module-ui__: Chest Menu Builder
 + __module-ui-receptacle__: Chest Menu Builder Implemented with Packet
++ __module-ui-starkkit__: Chest Menu Builder Implemented with Starkkit for Bedrock Version.
 + __platform-bukkit__: Bukkit Implementation
 + __platform-bungee__: BungeeCord Implementation
 + __platform-nukkit__: Nukkit Implementation
 + __platform-sponge-api7__: Sponge (api7) Implementation
 + __platform-sponge-api8__: Sponge (api8) Implementation
 + __platform-sponge-api9__: Sponge (api9) Implementation
++ __platform-starkkit__: Starkkit(Nukkit) Implementation
 + __platform-velocity__: Velocity Implementation
 + __platform-cloudnet-v3__: CloudNet (v3) Implementation
 + __platform-application__: Standalone Application Implementation

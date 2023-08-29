@@ -106,9 +106,11 @@ fun ProxyPlayer.teleport(uuid: UUID) {
 + __module-chat__: Component（Json）信息构建工具与 1.16 RGB 颜色转换
 + __module-configuration__: 配置文件解决方案（Yaml & Toml & Hocon & Json)
 + __module-configuration-legacy__: Yaml 封装接口与配置文件管理工具（老版本，6.0.3 以前)
++ __module-custom-addon: 基岩版自定义物品，实体等的常用工具。
 + __module-database__: 数据库管理工具
 + __module-database-mongodb__: 数据库管理工具（MongoDB）
 + __module-effect__: 粒子生成工具
++ __moduel-form__: 基岩版的Form表单的常用工具
 + __module-kether__: 内建脚本（动作语句）解决方案
 + __module-lang__: 语言文件工具
 + __module-metrics__: bStats 整合
@@ -118,12 +120,14 @@ fun ProxyPlayer.teleport(uuid: UUID) {
 + __module-porticus__: BungeeCord 通讯工具
 + __module-ui__: 箱子菜单构建工具
 + __module-ui-receptacle__: 箱子菜单构建工具（发包实现）
++ __module-ui-starkkit__: 箱子菜单再基岩版的一些常用工具
 + __platform-bukkit__: Bukkit 实现
 + __platform-bungee__: BungeeCord 实现
 + __platform-nukkit__: Nukkit 实现
 + __platform-sponge-api7__: Sponge (api7) 实现
 + __platform-sponge-api8__: Sponge (api8) 实现
 + __platform-sponge-api9__: Sponge (api9) 实现
++ __platform-starkkit__: Starkkit(Nukkit) 实现
 + __platform-velocity__: Velocity 实现
 + __platform-cloudnet-v3__: CloudNet (v3) 实现
 + __platform-application__: 独立程序实现
