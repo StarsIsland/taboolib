@@ -1,4 +1,4 @@
-package taboolib.platform.fakeInv.block
+package taboolib.module.ui.fakeInv.block
 
 import cn.nukkit.Player;
 import cn.nukkit.blockstate.BlockStateRegistry;
@@ -7,6 +7,7 @@ import cn.nukkit.nbt.NBTIO;
 import cn.nukkit.nbt.tag.CompoundTag;
 import cn.nukkit.network.protocol.BlockEntityDataPacket;
 import cn.nukkit.network.protocol.UpdateBlockPacket;
+import taboolib.module.ui.fakeInv.block.FakeBlock
 
 import java.io.IOException;
 import java.nio.ByteOrder;

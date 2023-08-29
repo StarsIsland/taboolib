@@ -1,4 +1,4 @@
-package taboolib.platform.fakeInv.block
+package taboolib.module.ui.fakeInv.block
 
 import cn.nukkit.Player
 import cn.nukkit.math.Vector3

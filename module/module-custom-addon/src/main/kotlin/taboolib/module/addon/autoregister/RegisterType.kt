@@ -1,4 +1,4 @@
-package taboolib.platform.autoregister
+package taboolib.module.addon.autoregister
 
 enum class RegisterType {
     BLOCK,

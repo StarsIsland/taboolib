@@ -6,6 +6,7 @@ fun importModules() {
     include("module:module-nms")
     include("module:module-nms-util")
     include("module:module-chat")
+    include("module:module-custom-addon")
     include("module:module-lang")
     include("module:module-effect")
     include("module:module-form")
@@ -19,6 +20,7 @@ fun importModules() {
     include("module:module-navigation")
     include("module:module-ui", "module:module-ui-legacy")
     include("module:module-ui-receptacle")
+    include("module:module-ui-starkkit")
     include("module:module-configuration", "module:module-configuration-shaded", "module:module-configuration-legacy")
 }
 

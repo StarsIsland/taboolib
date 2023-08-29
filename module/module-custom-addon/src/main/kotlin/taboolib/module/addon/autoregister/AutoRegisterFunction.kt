@@ -1,4 +1,4 @@
-package taboolib.platform.autoregister
+package taboolib.module.addon.autoregister
 
 import cn.nukkit.block.Block
 import cn.nukkit.block.customblock.CustomBlock
@@ -8,12 +8,7 @@ import cn.nukkit.entity.provider.CustomClassEntityProvider
 import cn.nukkit.item.Item
 import cn.nukkit.item.customitem.CustomItem
 import cn.nukkit.item.enchantment.Enchantment
-import taboolib.common.platform.function.info
-import java.io.File
 import java.lang.reflect.Modifier
-import java.net.URISyntaxException
-import java.net.URL
-import java.nio.file.Paths
 import java.util.jar.JarFile
 
 object AutoRegisterFunction {

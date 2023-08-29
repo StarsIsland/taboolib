@@ -1,4 +1,4 @@
-package taboolib.platform.fakeInv
+package taboolib.module.ui.fakeInv
 
 import cn.nukkit.Player
 import cn.nukkit.event.inventory.InventoryTransactionEvent
@@ -9,7 +9,7 @@ import cn.nukkit.math.Vector3
 import cn.nukkit.network.protocol.ContainerClosePacket
 import cn.nukkit.network.protocol.ContainerOpenPacket
 import taboolib.common.platform.function.submit
-import taboolib.platform.fakeInv.block.FakeBlock
+import taboolib.module.ui.fakeInv.block.FakeBlock
 import java.util.*
 import kotlin.collections.HashMap
 

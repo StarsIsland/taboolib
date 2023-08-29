@@ -1,4 +1,4 @@
-package taboolib.platform.fakeInv
+package taboolib.module.ui.fakeInv
 
 import cn.nukkit.block.Block
 import cn.nukkit.blockentity.BlockEntity
@@ -6,9 +6,9 @@ import cn.nukkit.event.inventory.InventoryTransactionEvent
 import cn.nukkit.inventory.InventoryType
 import cn.nukkit.inventory.transaction.action.SlotChangeAction
 import taboolib.common.platform.event.SubscribeEvent
-import taboolib.platform.fakeInv.block.DoubleFakeBlock
-import taboolib.platform.fakeInv.block.FakeBlock
-import taboolib.platform.fakeInv.block.SingleFakeBlock
+import taboolib.module.ui.fakeInv.block.DoubleFakeBlock
+import taboolib.module.ui.fakeInv.block.FakeBlock
+import taboolib.module.ui.fakeInv.block.SingleFakeBlock
 import java.util.*
 
 
