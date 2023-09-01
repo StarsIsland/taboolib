@@ -35,7 +35,7 @@ object AutoRegisterFunction {
             val clazz = Class.forName(className)
             val modifiers = clazz.modifiers
 
-            if (Modifier.isAbstract(modifiers) || clazz.isAnnotationPresent(AutoRegister::class.java)) {
+            if (Modifier.isAbstract(modifiers) || !clazz.isAnnotationPresent(AutoRegister::class.java)) {
                 return
             }
 

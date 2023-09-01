@@ -8,3 +8,7 @@ fun Location.toCommonLocation(): taboolib.common.util.Location {
         pitch.toFloat()
     )
 }
+
+fun taboolib.common.util.Location.toLocation() : Location {
+    return Location(this.x, this.y, this.z, this.yaw.toDouble(), this.pitch.toDouble(), nukkitPlugin.server.getLevelByName(this.world))
+}
