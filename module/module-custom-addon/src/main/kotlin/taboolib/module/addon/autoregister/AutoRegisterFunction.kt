@@ -8,6 +8,9 @@ import cn.nukkit.entity.provider.CustomClassEntityProvider
 import cn.nukkit.item.Item
 import cn.nukkit.item.customitem.CustomItem
 import cn.nukkit.item.enchantment.Enchantment
+import taboolib.common.TabooLibCommon
+import taboolib.common.platform.function.dev
+import taboolib.common.platform.function.info
 import taboolib.common.platform.function.warning
 import java.lang.reflect.Modifier
 import java.util.jar.JarFile
@@ -39,6 +42,10 @@ object AutoRegisterFunction {
                 return
             }
 
+            if(TabooLibCommon.isDevelopmentMode()) {
+                dev("Scanned target class ${clazz.simpleName}")
+            }
+
             when {
                 isTypeOf<CustomItem>(clazz) -> registerCustomItem(clazz)
                 isTypeOf<BlockEntity>(clazz) -> registerBlockEntity(clazz)
@@ -56,10 +63,16 @@ object AutoRegisterFunction {
     }
 
     private fun registerCustomItem(clazz: Class<*>) {
+        if(TabooLibCommon.isDevelopmentMode()) {
+            dev("Register custom item ${clazz.simpleName}")
+        }
         Item.registerCustomItem(clazz.castToType<CustomItem>())
     }
 
     private fun registerBlockEntity(clazz: Class<*>) {
+        if(TabooLibCommon.isDevelopmentMode()) {
+            dev("Register block entity ${clazz.simpleName}")
+        }
         clazz.getAnnotation(BlockEntityData::class.java)?.let { data ->
             BlockEntity.registerBlockEntity(data.name, clazz.castToType<BlockEntity>())
         } ?: run {
@@ -68,10 +81,16 @@ object AutoRegisterFunction {
     }
 
     private fun registerCustomBlock(clazz: Class<*>) {
+        if(TabooLibCommon.isDevelopmentMode()) {
+            dev("Register custom block ${clazz.simpleName}")
+        }
         Block.registerCustomBlock(listOf(clazz.castToType<CustomBlock>()))
     }
 
     private fun registerEnchantment(clazz: Class<*>) {
+        if(TabooLibCommon.isDevelopmentMode()) {
+            dev("Register custom enchantment ${clazz.simpleName}")
+        }
         clazz.getDeclaredConstructor().newInstance().let {
             if (it is Enchantment) {
                 Enchantment.register(it)
@@ -80,6 +99,9 @@ object AutoRegisterFunction {
     }
 
     private fun registerEntity(clazz: Class<*>) {
+        if(TabooLibCommon.isDevelopmentMode()) {
+            dev("Register custom entity ${clazz.simpleName}")
+        }
         Entity.registerCustomEntity(CustomClassEntityProvider(clazz.castToType<Entity>()))
     }
 
