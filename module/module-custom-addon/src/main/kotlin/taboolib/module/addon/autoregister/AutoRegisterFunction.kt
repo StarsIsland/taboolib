@@ -8,7 +8,6 @@ import cn.nukkit.entity.provider.CustomClassEntityProvider
 import cn.nukkit.item.Item
 import cn.nukkit.item.customitem.CustomItem
 import cn.nukkit.item.enchantment.Enchantment
-import taboolib.common.TabooLibCommon
 import taboolib.common.platform.function.dev
 import taboolib.common.platform.function.warning
 import java.lang.reflect.Modifier

@@ -10,6 +10,8 @@ import taboolib.common.platform.function.ExecutorKt;
 
 import java.lang.reflect.Field;
 
+import static taboolib.platform.NukkitPlugin.getPluginInstance;
+
 public class NukkitPluginDelegate {
 
 	private final Class<?> pluginClass;
@@ -40,12 +42,12 @@ public class NukkitPluginDelegate {
 	public void onLoad() throws IllegalAccessException {
 		TabooLibCommon.lifeCycle(LifeCycle.LOAD);
 		// 再次尝试搜索 Plugin 实现
-		if (NukkitPlugin.getPluginInstance() == null) {
+		if (getPluginInstance() == null) {
 			pluginInstance.set(null, Project1Kt.findImplementation(Plugin.class));
 		}
 		// 调用 Plugin 实现的 onLoad() 方法
-		if (NukkitPlugin.getPluginInstance() != null && !TabooLibCommon.isStopped()) {
-			NukkitPlugin.getPluginInstance().onLoad();
+		if (getPluginInstance() != null && !TabooLibCommon.isStopped()) {
+			getPluginInstance().onLoad();
 		}
 	}
 
@@ -54,8 +56,8 @@ public class NukkitPluginDelegate {
 		// 判断插件是否关闭
 		if (!TabooLibCommon.isStopped()) {
 			// 调用 onEnable() 方法
-			if (NukkitPlugin.getPluginInstance() != null) {
-				NukkitPlugin.getPluginInstance().onEnable();
+			if (getPluginInstance() != null) {
+				getPluginInstance().onEnable();
 			}
 			// 启动调度器
 			try {
@@ -71,8 +73,8 @@ public class NukkitPluginDelegate {
 				@Override
 				public void run() {
 					TabooLibCommon.lifeCycle(LifeCycle.ACTIVE);
-					if (NukkitPlugin.getPluginInstance() != null) {
-						NukkitPlugin.getPluginInstance().onActive();
+					if (getPluginInstance() != null) {
+						getPluginInstance().onActive();
 					}
 				}
 			});
@@ -82,9 +84,9 @@ public class NukkitPluginDelegate {
 	public void onDisable() {
 		TabooLibCommon.lifeCycle(LifeCycle.DISABLE);
 		// 在插件未关闭的前提下，执行 onDisable() 方法
-		if (NukkitPlugin.getPluginInstance() != null && !TabooLibCommon.isStopped()) {
-			NukkitPlugin.getPluginInstance().onDisable();
+		if (getPluginInstance() != null && !TabooLibCommon.isStopped()) {
+			getPluginInstance().onDisable();
 		}
 	}
-	
+
 }
