@@ -15,7 +15,7 @@ class UIManager(@NotNull uiInventoryGenerator: Supplier<CustomInventory>, @NotNu
     private val displayInventories: Object2IntMap<CustomInventory> = Object2IntOpenHashMap()
 
     interface UIUpdater {
-        fun update(inventory: CustomInventory?, immediately: Boolean)
+        fun update(inventory: CustomInventory, immediately: Boolean)
     }
 
     init {
@@ -29,7 +29,6 @@ class UIManager(@NotNull uiInventoryGenerator: Supplier<CustomInventory>, @NotNu
         return inventory
     }
 
-    @JvmOverloads
     fun update(immediately: Boolean = false) {
         val currentTick: Int = Server.getInstance().tick
         val iterator: ObjectIterator<Object2IntMap.Entry<CustomInventory>> =
