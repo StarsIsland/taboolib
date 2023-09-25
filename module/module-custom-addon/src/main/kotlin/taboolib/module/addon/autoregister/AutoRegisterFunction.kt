@@ -8,6 +8,7 @@ import cn.nukkit.entity.provider.CustomClassEntityProvider
 import cn.nukkit.item.Item
 import cn.nukkit.item.customitem.CustomItem
 import cn.nukkit.item.enchantment.Enchantment
+import cn.nukkit.level.Level
 import taboolib.common.platform.function.dev
 import taboolib.common.platform.function.warning
 import java.lang.reflect.Modifier
@@ -74,7 +75,13 @@ object AutoRegisterFunction {
 
     private fun registerCustomBlock(clazz: Class<*>) {
         dev("Register custom block ${clazz.simpleName}")
-        Block.registerCustomBlock(listOf(clazz.castToType<CustomBlock>()))
+        val blockClazz = clazz.castToType<CustomBlock>()
+        Block.registerCustomBlock(listOf(blockClazz))
+        if (clazz.isAnnotationPresent(RandomTick::class.java)) {
+            (blockClazz?.constructors?.first { it.parameterCount == 0 }?.newInstance() as Block?)?.id?.let { id ->
+                Level.setCanRandomTick(id, true)
+            }
+        }
     }
 
     private fun registerEnchantment(clazz: Class<*>) {
